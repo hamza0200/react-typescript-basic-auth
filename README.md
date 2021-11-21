@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# React app with basic auth and API integration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with react typescript template.
 
-## Available Scripts
+Username: `hamza`\
+Password: `12345`
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+In the project directory, you can run following command to install the dependencies:
+
+`yarn install`
+
+In the project directory, you can run following command to start the project:
+
+`yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
+- Single page application using React with 2 pages; Login and Dashboard
+- The project uses basic auth for login and stores token in the local storage
+- Project build with functional components with inline documentation for easy understanding
+- [Material UI](https://material-ui.io) is used to create template
+- [React Router Dom](https://reactrouter.com/) V6 is used to hanlde routings
+- The project uses [Weather API](https://www.weatherapi.com/) to populate dashboard. The `secretKey` is stored in the `.env` configuration
+- [Notistack](https://github.com/iamhosseindhv/notistack) is used to handle notification
+- Login form has validations e.g. required fields and incorrect login credentials
+- Used fetch, await and promises to integrate API
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How this project is built?
+Install react-typescript project:\
+`npx create-react-app weather-ts --template typescript`
 
-### `yarn build`
+Install material ui:\
+`yarn add @material-ui/core`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install material ui icons:\
+`yarn add @material-ui/icons`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install react router:\
+`yarn add react-router`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install react router dom:\
+`yarn add react-router-dom`
 
-### `yarn eject`
+Install Roboto font:\
+`yarn add @fontsource/roboto`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install notistack for notification:\
+`yarn add notistack`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots
+`Login`
+![image](https://user-images.githubusercontent.com/17562105/142771703-5da92e81-b5a3-4659-a783-564283735775.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`Validations`
+![image](https://user-images.githubusercontent.com/17562105/142771938-ba19a8db-75a7-4b5c-881c-97f6730870d1.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`Dashboard`
+![image](https://user-images.githubusercontent.com/17562105/142771710-282486ff-4954-4e36-b8c6-6307a37b1a95.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
