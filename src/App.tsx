@@ -11,7 +11,9 @@ import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
+    // encapsulate app in snack bar provider to handle notifications
     <SnackbarProvider>
+      {/* encapsulate app in the style and theme provider */}
       <StylesProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />

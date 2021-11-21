@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// style paper component
 const StyledPaper = withStyles((theme) => ({
   root: {
     padding: theme.spacing(4)
@@ -38,18 +39,27 @@ const LoginForm = (): React.ReactElement => {
 
   // perform login and redirect to dashboard
   const handleLoginSubmit = () => {
+    
+    // sample username and password values
     const user = ['hamza', '12345'];
+
+    // fields validation
     if(email === ''){
       enqueueSnackbar("Error! You must enter username or email address", { variant: "error" });
     }
     if(password === ''){
       enqueueSnackbar("Error! You must enter password", { variant: "error" });
     }
-    if(email === user[0] && password === user[1]){
-      localStorage.setItem('token', JSON.stringify(user));
-      navigate("/dashboard");
-    }else{
-        enqueueSnackbar("Error! Incorrect username or password", { variant: "error" });
+
+    if(email && password) {
+      // if username and password matches, then save credentials in local storage
+      if(email === user[0] && password === user[1]){
+        localStorage.setItem('token', JSON.stringify(user));
+        navigate("/dashboard");
+      }else{
+        // throw error if credentials are incorrect
+          enqueueSnackbar("Error! Incorrect username or password", { variant: "error" });
+      }
     }
   }
 
@@ -63,6 +73,7 @@ const LoginForm = (): React.ReactElement => {
         justifyContent="center"
         className="height-100vh"
       >
+        {/* create login widget */}
         <Grid item className={classes.gridWrapper}>
           <StyledPaper elevation={6}>
             
@@ -75,7 +86,9 @@ const LoginForm = (): React.ReactElement => {
               <Typography variant="body2" className="text-bold">Random Text Goes here!</Typography>
             </Box>
             
+            {/* create login form */}
             <Box mb={4}>
+              {/* create username field */}
               <TextField 
                 onChange={(e) => setEmail(e.target.value)}
                 label="Email" 
@@ -90,6 +103,7 @@ const LoginForm = (): React.ReactElement => {
             </Box>
             
             <Box mb={4}>
+              {/* create password field with hidden password */}
               <TextField 
                 onChange={(e) => setPassword(e.target.value)}
                 label="Password" 
@@ -104,6 +118,7 @@ const LoginForm = (): React.ReactElement => {
             </Box>
 
             <Box mb={4}>
+              {/* create button */}
               <Button 
                 onClick={handleLoginSubmit}
                 variant="contained" 

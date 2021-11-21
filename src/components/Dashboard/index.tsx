@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, Typography, Button, createStyles, Grid, makeStyles, Theme, Paper } from "@material-ui/core";
+import { AppBar, Box, Toolbar, Typography, createStyles, Grid, makeStyles, Theme, Paper, LinearProgress } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { MenuLogo } from "../Assets";
 import AuthLogout from '../Auth/AuthLogout';
@@ -18,9 +18,18 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: theme.spacing(1),
         marginBottom: theme.spacing(2),
     },
+    gridCenter: {
+        margin: "0 auto",
+    },
   })
 );
+interface DashboardProps {
+    data: any;
+    loading: boolean;
+    areas: string[];
+}
 
+// style paper component
 const StyledPaper = withStyles((theme) => ({
     root: {
       padding: theme.spacing(0),
@@ -29,58 +38,53 @@ const StyledPaper = withStyles((theme) => ({
     }
 }))(Paper);
 
-const DashboardView = (): React.ReactElement => {
+const DashboardView: React.FC<DashboardProps> = ({data, loading, areas})=> {
   const classes = useStyles();
-  
   return (
     <>
+        {/* menu bar */}
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar className={classes.toolBarWrapper}>
                     <div><MenuLogo /></div>
+                    {/* logout button */}
                     <div><AuthLogout /></div>
                 </Toolbar>
             </AppBar>
         </Box>
+        {/* content area */}
         <Box sx={{ flexGrow: 1 }}>
             <Grid
                 container
-                spacing={3}
+                spacing={4}
+                item
+                className={classes.gridCenter}
+                lg={10} sm={12} xs={12}
             >
-                <Grid item xs={4} className={classes.widgetWrapper}>
-                    <StyledPaper elevation={6}>
-                        <Box className={classes.widgetTitle} mb={2}>Dallas</Box>
-                        <Box className="align-center" mb={3}>
-                            <Typography variant="body2" className="text-bold">Partially Cloudy</Typography>
-                            <Typography variant="h3" className="text-bold">26.1 C</Typography>
-                            <Typography variant="caption" className="text-bold">Last updated: 11/10/2021</Typography>
-                        </Box>
-                    </StyledPaper>
-                </Grid>   
-
-                <Grid item xs={4} className={classes.widgetWrapper}>
-                    <StyledPaper elevation={6}>
-                        <Box className={classes.widgetTitle} mb={2}>Dallas</Box>
-                        <Box className="align-center" mb={3}>
-                            <Typography variant="body2" className="text-bold">Partially Cloudy</Typography>
-                            <Typography variant="h3" className="text-bold">26.1 C</Typography>
-                            <Typography variant="caption" className="text-bold">Last updated: 11/10/2021</Typography>
-                        </Box>
-                    </StyledPaper>
-                </Grid> 
-
-                <Grid item xs={4} className={classes.widgetWrapper}>
-                    <StyledPaper elevation={6}>
-                        <Box className={classes.widgetTitle} mb={2}>Dallas</Box>
-                        <Box className="align-center" mb={3}>
-                            <Typography variant="body2" className="text-bold">Partially Cloudy</Typography>
-                            <Typography variant="h3" className="text-bold">26.1 C</Typography>
-                            <Typography variant="caption" className="text-bold">Last updated: 11/10/2021</Typography>
-                        </Box>
-                    </StyledPaper>
-                </Grid>  
-                
-            </Grid> 
+                {/* iterate through each location */}
+                {areas.map((area, i) => (
+                    <Grid item xs={6} sm={4} className={classes.widgetWrapper} key={i}>
+                        <StyledPaper elevation={6}>
+                            <Box className={classes.widgetTitle} mb={2}>{area}</Box>
+                            <Box className="align-center" mb={2} p={1}>
+                                {/* weather condition */}
+                                <Typography variant="body2" className="text-bold">{data[area]?.current?.condition?.text}</Typography>
+                                {/* weather temperature */}
+                                <Typography variant="h3" className="text-bold">{data[area]?.current?.temp_c}&deg;C</Typography>
+                                {/* weather last updated */}
+                                <Typography variant="caption" className="text-bold">Last updated: {data[area]?.current?.last_updated}</Typography>
+                            </Box>
+                        </StyledPaper>
+                    </Grid>
+                ))}
+            </Grid>
+            {/* show loader */}
+            <Grid
+                container
+                spacing={3}
+                style={{marginTop: 20}}>
+                {loading && <LinearProgress style={{width: "100%"}}/>}
+            </Grid>
         </Box>
     </>
   );

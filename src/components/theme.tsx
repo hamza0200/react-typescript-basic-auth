@@ -1,6 +1,7 @@
-import * as React from "react";
 import { Theme, createTheme } from "@material-ui/core/styles";
 import "@fontsource/roboto";
+
+// create a standard theme to manage stylings of project
 
 const theme: Theme = createTheme({
   typography: {
@@ -10,13 +11,11 @@ const theme: Theme = createTheme({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     fontWeightBold: 900,
-    // section headings
     h3: {
-      fontSize: 45,
+      fontSize: 42,
       fontWeight: 900,
       lineHeight: 1.36,
     },
-    // paragraph
     body1: {
       fontSize: 16,
       fontWeight: 400,
@@ -31,7 +30,14 @@ const theme: Theme = createTheme({
         lineHeight: 1.25,
         letterSpacing: 0,
     },
-    // button
+    caption: {
+        fontSize: 16,
+        fontWeight: 400,
+        fontStyle: "normal",
+        lineHeight: 1.25,
+        letterSpacing: 0,
+        color: "#888888",
+    },
     button: {
       fontSize: 16,
       fontWeight: 600,
