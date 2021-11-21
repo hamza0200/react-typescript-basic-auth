@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import {
+  ThemeProvider,
+  StylesProvider,
+} from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { Paper } from "@material-ui/core";
+import Module from "./pages";
+import theme from "./components/theme";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SnackbarProvider>
+      <StylesProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Paper elevation={0}>
+            <Module />
+          </Paper>
+        </ThemeProvider>
+      </StylesProvider>
+    </SnackbarProvider>
   );
 }
 

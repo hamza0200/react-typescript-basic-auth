@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.logo {
+  max-width: 100px;
+}
+
+.menu-icon {
+  max-width: 50px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.height-100vh {
+  min-height: 100vh;
+}
