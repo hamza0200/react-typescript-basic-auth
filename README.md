@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - If logged-in user lands on login page, he will be redirected to dashboard and if a random (logged-out) user tires to access dashboard he will be redirected to login page
 - Project is build with functional components with inline documentation for easy understanding
 - [Material UI](https://material-ui.io) is used to create template
-- [React Router Dom](https://reactrouter.com/) V6 is used to hanlde routings
+- [React Router Dom](https://reactrouter.com/) V6 is used to handle routings
 - The project uses [Weather API](https://www.weatherapi.com/) to populate dashboard. The `secretKey` is stored in the `.env` configuration
 - [Notistack](https://github.com/iamhosseindhv/notistack) is used to handle notification
 - Login form has validations e.g. required fields and incorrect login credentials
